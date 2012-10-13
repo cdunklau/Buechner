@@ -11,6 +11,8 @@ Configuration is done by environment variables or by a file. This makes it easy
 to use Buechner to throw static files at your S3 bucket through a git hook from
 Heroku.
 
+It will only transfer files that are newer than their counterparts on S3. It
+won't delete anything, only overwrite.
 
 ## Usage
 
