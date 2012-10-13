@@ -23,6 +23,7 @@ def init_s3_interface(s3_bucket, access_key_id, secret_access_key):
     """
     conn = S3Connection(access_key_id, secret_access_key)
     bucket = conn.get_bucket(s3_bucket)
+    return conn, bucket
 
 
 def get_keys_from_directory(basedir):
@@ -93,6 +94,7 @@ def upload_new_files(staticdir, bucket):
 
         uploaded_files.append(filepath)
         the_key.set_contents_from_filename(os.path.join(staticdir, filepath))
+    return uploaded_files
 
 
 
@@ -136,4 +138,4 @@ if __name__ == '__main__':
         AWS_SECRET_ACCESS_KEY)
     uploaded = upload_new_files(staticdir, bucket)
     for filename in uploaded:
-        print "Uploaded '%s' to S3"
+        print "Uploaded '%s' to S3" % filename
