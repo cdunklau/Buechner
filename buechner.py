@@ -41,7 +41,7 @@ def get_keys_from_directory(basedir):
     # Fill up results with base, namelist
     os.path.walk(
         basedir,
-        (lambda x,y,z: results.append([y,z])),
+        (lambda x, y, z: results.append([y,z])),
         None)
     files = dict()
     for base, names in results:
@@ -50,7 +50,8 @@ def get_keys_from_directory(basedir):
             # only care about files
             if os.path.isfile(fullpath):
                 mtime = datetime.utcfromtimestamp(os.path.getmtime(fullpath))
-                relative_path = fullpath.replace(basedir, '').lstrip(os.path.sep)
+                relative_path = fullpath.replace(
+                    basedir, '').lstrip(os.path.sep)
                 files[relative_path] = mtime
     return files
 
@@ -95,7 +96,6 @@ def upload_new_files(staticdir, bucket):
         uploaded_files.append(filepath)
         the_key.set_contents_from_filename(os.path.join(staticdir, filepath))
     return uploaded_files
-
 
 
 if __name__ == '__main__':
