@@ -105,7 +105,7 @@ def upload_new_files(staticdir, bucket):
 if __name__ == '__main__':
     # If no AWS keys are found in environment, try to import the config file
     try:
-        AWS_S3_BUCKET = os.environ.get['AWS_S3_BUCKET']
+        AWS_S3_BUCKET = os.environ['AWS_S3_BUCKET']
         AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
         AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
         print "Using environment config. Loading bucket '%s'" % (
