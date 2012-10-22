@@ -17,8 +17,9 @@ won't delete anything, only overwrite.
 ## Usage
 
 Drop buechner.py into your main project directory. It assumes your static
-dir is at src/static relative to its own directory, but you can change that
-by hacking STATIC_DIR_REL near the top.
+dir is at src/static relative to its own directory, but you can change that by
+adding BUECHNER_STATIC_RELPATH to your environment. Note that this path is
+defined with respect to Buechner's file path.
 
 Set up your environment or a file 'aws_config.py' like so:
 

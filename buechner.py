@@ -6,10 +6,14 @@ from datetime import datetime
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
-# Relative path from directory of buechner.py
-STATIC_DIR_REL = os.path.join(
-    'src',
-    'static')
+# Relative path from directory of buechner.py. Default to src/static,
+# but script will attempt to pull from BUECHNER_STATIC_RELPATH env var.
+try:
+    STATIC_DIR_REL = os.environ['BUECHNER_STATIC_RELPATH']
+except KeyError:
+    STATIC_DIR_REL = os.path.join(
+        'src',
+        'static')
 
 
 def init_s3_interface(s3_bucket, access_key_id, secret_access_key):
@@ -101,7 +105,7 @@ def upload_new_files(staticdir, bucket):
 if __name__ == '__main__':
     # If no AWS keys are found in environment, try to import the config file
     try:
-        AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET')
+        AWS_S3_BUCKET = os.environ.get['AWS_S3_BUCKET']
         AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
         AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
         print "Using environment config. Loading bucket '%s'" % (
