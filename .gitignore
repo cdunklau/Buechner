@@ -1,1 +1,3 @@
 *.py[co]
+aws_config.py
+venv

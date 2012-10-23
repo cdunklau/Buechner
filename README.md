@@ -7,12 +7,15 @@ Upload your Flask static files to Amazon S3
 Buechner leverages [Boto](https://github.com/boto/boto) to let you easily push
 static files to S3. It doesn't require Flask, that's just what I use it for.
 
-Configuration is done by environment variables or by a file. This makes it easy
-to use Buechner to throw static files at your S3 bucket through a git hook from
-Heroku.
+Configuration is done by environment variables or by a file. This makes it
+easy to use Buechner to throw static files at your S3 bucket through a git
+hook from Heroku.
 
 It will only transfer files that are newer than their counterparts on S3. It
 won't delete anything, only overwrite.
+
+It will set the entire bucket's ACL to public read, as well as each key (file)
+that it uploads
 
 ## Usage
 

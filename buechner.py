@@ -99,6 +99,7 @@ def upload_new_files(staticdir, bucket):
 
         uploaded_files.append(filepath)
         the_key.set_contents_from_filename(os.path.join(staticdir, filepath))
+        the_key.set_acl('public-read')
     return uploaded_files
 
 
@@ -143,3 +144,6 @@ if __name__ == '__main__':
     uploaded = upload_new_files(staticdir, bucket)
     for filename in uploaded:
         print "Uploaded '%s' to S3" % filename
+    print "Setting public read ACL on bucket '%s'..." % AWS_S3_BUCKET
+    bucket.set_acl('public-read')
+    print "Complete!"
