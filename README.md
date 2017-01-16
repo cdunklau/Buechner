@@ -2,6 +2,11 @@
 
 Upload your Flask static files to Amazon S3
 
+## Current Status
+
+I have no plans to work on this project any further. There are most likely
+better things out there anyway. Go use something else :)
+
 ## What's it do?
 
 Buechner leverages [Boto](https://github.com/boto/boto) to let you easily push
